@@ -514,7 +514,7 @@
         }
     }
 
-    function showListItems(list) {
+    function showListItems(list,params) {
         const htmlContainer = document.querySelector('.upym__list');
         const template = document.querySelector('.upym__template').innerHTML;
         htmlContainer.innerHTML = '';
@@ -571,13 +571,13 @@
                     return item.id;
                 });
                 const objectsData = data.rows.filter(item => objectsIDs.includes(item[fields['id']]));
-                showListItems(objectsData);
+                showListItems(objectsData,params);
             });
             //Вешаю слушатель на объект
             objectManager.objects.events.add(['click'], function (e) {
                 const objectId = e.get('objectId');
                 const objectsData = data.rows.filter(item => objectId === item[fields['id']]);
-                showListItems(objectsData);
+                showListItems(objectsData,params);
             });
         }
 
